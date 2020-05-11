@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-con-manager
+  labels:
+    app: go-con-manager
+spec:
+  selector:
+    matchLabels:
+      app: go-con-manager
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: go-con-manager
+    spec:
+      containers:
+        - name: master
+          image: go-con-manager
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8088
