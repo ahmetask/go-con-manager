@@ -5,7 +5,8 @@ ADD . /go/src/go-con-manager
 WORKDIR /go/src/go-con-manager
 ENV GO111MODULE=on
 
-RUN go build -mod=vendor -o main
+RUN go mod download
+RUN go build -o main
 
 FROM debian:9.9-slim
 
